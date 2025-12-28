@@ -1,9 +1,14 @@
 from atlassian import Jira
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
 
 jira = Jira(
     url='https://alekseiivanovqa.atlassian.net',
     username='aleksei.ivanov.qa@gmail.com',
-    password="ATATT3xFfGF0Gs_kuJyAO2fDd7qIHHFP7PyoRSonNVZhfS9kfWGFi-LzWiSesmuJpFIAkpnaRVmDpc7_ipSaR13YIf8PghlTPZWQVxggaJpE1TYfOQLEDUyo-WpHaOlZvGlbOWeUhUk9OYmwOLLjwWCxUrfEC5HQVeCrCGRDpot19cLxTbquDD0=63CE545A"
+    password=os.getenv('JIRA_API_TOKEN')
 )
 
 def create_jira_bug(summary, description):

@@ -1,9 +1,11 @@
-<html><head><title>Pipeline Summary</title></head><body><h1>End-to-End QA Pipeline Summary</h1><h2>UI Tests: FAIL</h2><p>Pytest HTML report: <a href='ui_test_report.html'>View Report</a></p><p>Allure report folder: reports\allure-report</p><h2>API Tests: PASS</h2><pre>newman
+<html><head><title>Pipeline Summary</title></head><body><h1>End-to-End QA Pipeline Summary</h1><h2>UI Tests: FAIL</h2><p>Pytest HTML report: <a href='ui_test_report.html'>View Report</a></p><p>Allure report folder: reports\allure-report</p><h2>API Tests: FAIL</h2><pre>newman
 
 Smoke API Tests
 
 → Health Check
-  GET https://reqres.in/api/users/2 [403 Forbidden, 11.1kB, 134ms]
+  GET https://reqres.in/api/users/2 [403 Forbidden, 11.13kB, 108ms]
+  1. Status code is 200
+  √  Response time < 1000ms
 
 ┌─────────────────────────┬────────────────────┬───────────────────┐
 │                         │           executed │            failed │
@@ -12,19 +14,26 @@ Smoke API Tests
 ├─────────────────────────┼────────────────────┼───────────────────┤
 │                requests │                  1 │                 0 │
 ├─────────────────────────┼────────────────────┼───────────────────┤
-│            test-scripts │                  0 │                 0 │
+│            test-scripts │                  1 │                 0 │
 ├─────────────────────────┼────────────────────┼───────────────────┤
 │      prerequest-scripts │                  0 │                 0 │
 ├─────────────────────────┼────────────────────┼───────────────────┤
-│              assertions │                  0 │                 0 │
+│              assertions │                  2 │                 1 │
 ├─────────────────────────┴────────────────────┴───────────────────┤
-│ total run duration: 188ms                                        │
+│ total run duration: 169ms                                        │
 ├──────────────────────────────────────────────────────────────────┤
-│ total data received: 8.98kB (approx)                             │
+│ total data received: 9.02kB (approx)                             │
 ├──────────────────────────────────────────────────────────────────┤
-│ average response time: 134ms [min: 134ms, max: 134ms, s.d.: 0µs] │
+│ average response time: 108ms [min: 108ms, max: 108ms, s.d.: 0µs] │
 └──────────────────────────────────────────────────────────────────┘
 
-(node:35940) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
+[31m  # [39m[31m failure        [39m[31m detail                                                [39m
+[90m    [39m[90m                [39m[90m                                                       [39m
+ 1.  AssertionError  Status code is 200                                    
+                     expected response to have status code 200 but got 403 
+                     at assertion:0 in test-script                         
+                     inside "Health Check"                                 
+
+(node:8672) [DEP0176] DeprecationWarning: fs.F_OK is deprecated, use fs.constants.F_OK instead
 (Use `node --trace-deprecation ...` to show where the warning was created)
 </pre><h2>Overall Pipeline Result:</h2><p style='color:red;font-weight:bold;'>PIPELINE COMPLETED WITH FAILURES — CHECK JIRA AND REPORTS</p></body></html>
