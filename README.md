@@ -24,36 +24,41 @@ Perfect demonstration of modern QA engineering skills: test orchestration, repor
 
 ## Architecture Overview
 
-```mermaid
-graph TD
-    A[pipeline.py] --> B[Run UI Tests<br>(Selenium POM)]
-    A --> C[Run API Tests<br>(Newman/Postman)]
-    B & C --> D[Generate Reports<br>(Allure/HTML)]
-    D --> E{Success?}
-    E -->|No| F[Create JIRA Ticket<br>(jira_integration.py)]
-    E -->|Yes| G[Pipeline Complete]
-    B --> H[Save Screenshots<br>(screenshoots/)]
+The pipeline works as follows:
 
-Project Structure
+1. `pipeline.py` triggers UI tests (Selenium with POM)
+2. `pipeline.py` triggers API tests (Newman/Postman collections)
+3. Test results are collected and used to generate Allure reports
+4. If any test fails → `jira_integration.py` automatically creates a JIRA ticket with details and attachments
+5. On UI test failures → screenshots are saved to `screenshots/`
+
+### Example Pipeline Architecture Diagrams
+
+![QA Pipeline Architecture Example 1](https://www.testim.io/wp-content/uploads/2022/08/CI-CD-Pipeline.png)
+![QA Pipeline Architecture Example 2](https://www.browserstack.com/guide/wp-content/uploads/2023/05/CI-CD-Pipeline.png)
+![QA Pipeline Architecture Example 3](https://miro.medium.com/v2/resize:fit:1400/1*9pT9oq9n2v0f0b8f0b8f0b8f0b8f0b8f0b8f.png)
+
+## Project Structure
 .
 ├── api_tests/            # Postman collections & Newman scripts
 ├── ui_tests/             # Selenium tests (Page Object Model)
 ├── reports/              # Generated Allure/HTML reports
-├── screenshoots/         # Screenshots from failed UI tests
+├── screenshots/          # Screenshots from failed UI tests (renamed for correctness)
 ├── jira_integration.py   # JIRA bug creation logic
 ├── pipeline.py           # Main orchestrator script
 ├── requirements.txt      # Python dependencies
 ├── .env                  # Environment variables (gitignored)
 └── README.md
 
-Quick Start
-1. Prerequisites
 
-Python 3.10+
-Node.js (for Newman)
-Chrome browser + ChromeDriver (managed via WebDriver Manager)
+## Quick Start
 
-2. Setup
+### 1. Prerequisites
+- Python 3.10+
+- Node.js (for Newman)
+- Chrome browser + ChromeDriver (managed via WebDriver Manager)
+
+### 2. Setup
 git clone https://github.com/AlekseiIvanovI/end-to-end-qa-pipeline.git
 cd end-to-end-qa-pipeline
 
@@ -87,11 +92,6 @@ Create JIRA tickets automatically if any test fails
 After execution:
 allure serve reports/
 (This opens an interactive Allure report in your browser with screenshots, logs, and trends.)
-Example Outputs
-
-Screenshots: Saved in screenshoots/ on UI failures
-Reports: Detailed Allure dashboard in reports/
-JIRA Tickets: Auto-created with summary, description, attachments (screenshots), and logs
 
 Technologies Used
 
@@ -106,6 +106,7 @@ python-dotenv — Secure env management
 Author
 Aleksei Ivanov
 Senior QA Automation Engineer (7+ years experience)
-GitHub Profile | LinkedIn (add your link)
+GitHub Profile | LinkedIn (add your LinkedIn link here)
 
 Note: This is a portfolio demonstration project. Real-world company contributions are on private repositories.
+Feel free to star ⭐ the repo if you find it useful!
