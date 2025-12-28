@@ -13,8 +13,8 @@ Integrates all tools:
 
 pip install -r requirements.txt
 python pipeline.py
-Results
 
+Results
 Full stack validation in one command
 Automatic defect logging in JIRA
 Comprehensive reporting
