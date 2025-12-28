@@ -32,11 +32,6 @@ The pipeline works as follows:
 4. If any test fails → `jira_integration.py` automatically creates a JIRA ticket with details and attachments
 5. On UI test failures → screenshots are saved to `screenshots/`
 
-### Example Pipeline Architecture Diagrams
-
-![QA Pipeline Architecture Example 1](https://www.testim.io/wp-content/uploads/2022/08/CI-CD-Pipeline.png)
-![QA Pipeline Architecture Example 2](https://www.browserstack.com/guide/wp-content/uploads/2023/05/CI-CD-Pipeline.png)
-![QA Pipeline Architecture Example 3](https://miro.medium.com/v2/resize:fit:1400/1*9pT9oq9n2v0f0b8f0b8f0b8f0b8f0b8f0b8f.png)
 
 ## Project Structure
 .
@@ -92,6 +87,14 @@ Create JIRA tickets automatically if any test fails
 After execution:
 allure serve reports/
 (This opens an interactive Allure report in your browser with screenshots, logs, and trends.)
+
+Example Outputs
+Allure Report Dashboard
+<img width="1919" height="1030" alt="Screenshot 2025-12-27 194607" src="https://github.com/user-attachments/assets/fe3e86e2-e323-489c-a65d-f98ea7b72e90" />
+
+Screenshots on Failure
+<img width="1919" height="1034" alt="Screenshot 2025-12-27 195130" src="https://github.com/user-attachments/assets/52256e4e-576a-4b1a-974a-97495b517f50" />
+
 
 Technologies Used
 
